@@ -29,22 +29,10 @@
 }
 
 .heading{
-    font-size: 46px;
+    font-size: 60px;
     font-family: 'Pixelify Sans', sans-serif;
     font-family: 'Silkscreen', sans-serif;
     color: whitesmoke;
-    /* text-shadow: -5px 0 15px rgb(255, 108, 0),
-    5px 0 15px rgb(81, 81, 255); */
-    /* text-shadow: /* White glow */
-    /* 0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff, */
-    /* Green glow */
-    /* 0 0 24px  rgb(132, 55, 255),
-    0 0 64px  rgb(132, 55, 255),
-    0 0 74px  rgb(132, 55, 255),
-    0 0 84px rgb(132, 55, 255),
-    0 0 134px rgb(132, 55, 255); */
     animation: flicker 1.5s infinite alternate;
 }
 
@@ -60,9 +48,9 @@
     5px 0 15px rgb(81, 81, 255);
 }
 
-#hiscoreBox{
+/* #hiscoreBox{
     /* position: absolute; */
-    top: 59px;
+    /* top: 59px;
     right: 200px;
     font-family: 'Pixelify Sans', sans-serif;
     font-family: 'Silkscreen', sans-serif;
@@ -70,7 +58,7 @@
     color: whitesmoke;
     text-shadow: -5px 0 15px rgb(255, 108, 0),
     5px 0 15px rgb(81, 81, 255);
-}
+} */
 #board{
     border: solid white 2px;
     width: 88vmin;
