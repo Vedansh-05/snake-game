@@ -29,13 +29,23 @@
 }
 
 .heading{
-    font-weight: bold;
-    font-size: 68px;
+    font-size: 46px;
     font-family: 'Pixelify Sans', sans-serif;
     font-family: 'Silkscreen', sans-serif;
     color: whitesmoke;
-    text-shadow: -5px 0 15px rgb(255, 108, 0),
-    5px 0 15px rgb(81, 81, 255);
+    /* text-shadow: -5px 0 15px rgb(255, 108, 0),
+    5px 0 15px rgb(81, 81, 255); */
+    /* text-shadow: /* White glow */
+    /* 0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff, */
+    /* Green glow */
+    /* 0 0 24px  rgb(132, 55, 255),
+    0 0 64px  rgb(132, 55, 255),
+    0 0 74px  rgb(132, 55, 255),
+    0 0 84px rgb(132, 55, 255),
+    0 0 134px rgb(132, 55, 255); */
+    animation: flicker 1.5s infinite alternate;
 }
 
 #scoreBox{
@@ -99,3 +109,20 @@
     transform: scale(0.75);
 }
 
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100%{
+        text-shadow: /* White glow */
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        /* Green glow */
+        0 0 24px  rgb(132, 55, 255),
+        0 0 64px  rgb(132, 55, 255),
+        0 0 74px  rgb(132, 55, 255),
+        0 0 84px rgb(132, 55, 255),
+        0 0 134px rgb(132, 55, 255);
+    }
+    20%, 24%, 55% {       
+      text-shadow: none;
+    }
+  }

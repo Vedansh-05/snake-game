@@ -41,13 +41,14 @@ function gameEngine(){
         let a=2,b=16;
         food = {x: Math.round(a + (b-a)*Math.random()), y: Math.round(a + (b-a)*Math.random())};
         score += 1;
-        if (score>hiscoreval){
-            hiscoreval=score;
-            localStorage.setItem("hiscore", JSON.stringify(hiscoreval));
-            hiscoreBox.innerHTML = "HiScore: "+ hiscore;
-        }
+        // if (score > hiscoreval){
+        //     hiscoreval = score;
+        //     console.log(hiscoreval);
+        //     console.log(hiscore);
+        //     localStorage.setItem("hiscore", toString(hiscoreval));
+        //     hiscoreBox.innerHTML = "HiScore: " + hiscore;
+        // }
         scoreBox.innerHTML = "Score: " + score;
-        console.log(score);
     }
 
     // Moving the snake
@@ -97,15 +98,20 @@ function isCollide(snake){
 
 
 // Main Logic Starts here
-let hiscore= localStorage.getItem("hiscore");
-if (hiscore=== null){
-    hiscoreval=0;
-    localStorage.setItem("hiscore", JSON.stringify(hiscoreval));
-}
-else{
-    hiscoreval = JSON.parse(hiscore)
-    hiscoreBox.innerHTML = "HiScore: "+ hiscore;
-}
+// let hiscore = localStorage.getItem("hiscore");
+// if (hiscore === null){
+//     hiscoreval = 0;
+//     localStorage.setItem("hiscore", toString(hiscoreval));
+//     console.log(hiscoreval);
+//     console.log(hiscore);
+
+// }
+// else{
+//     hiscoreval = JSON.parse(hiscore);
+//     hiscoreBox.innerHTML = "HiScore: "+ hiscore;
+//     console.log(hiscoreval);
+//     console.log(hiscore);
+// }
 
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e =>{
@@ -114,25 +120,21 @@ window.addEventListener('keydown', e =>{
     moveSound.play();
     switch(e.key){
         case "ArrowUp":
-            console.log("ArrowUp");
             inputDir.x=  0;
             inputDir.y= -1;
             break;
 
         case "ArrowDown":
-            console.log("ArrowDown");
             inputDir.x=  0;
             inputDir.y= 1;
             break;
 
         case "ArrowLeft":
-            console.log("ArrowLeft");
             inputDir.x=  -1;
             inputDir.y= 0;
             break;
 
         case "ArrowRight":
-            console.log("ArrowRight");
             inputDir.x=  1;
             inputDir.y= 0;
             break;
