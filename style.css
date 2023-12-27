@@ -8,7 +8,7 @@
 .container{
     background: linear-gradient(45deg, black, rgb(75, 73, 73));
     min-height: 100vh;
-    background-size: 100vw 95vh;
+    background-size: 100vw 100vh;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
