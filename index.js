@@ -10,16 +10,31 @@ let lastPaintTime=0;
 let snakeArr=[
     {x:13,y:15}
 ];
-let food= {x:6, y:7}
+let food= {x:6, y:7};
+let isPaused = false;
+var hiscoreval = 0;
 
-//Game functions
-function main(ctime){
-    window.requestAnimationFrame(main);
-    if((ctime-lastPaintTime)/1000 < 1/speed){
-        return;
+function newfoodpositon(){
+    let a=2,b=16;
+    food = {x: Math.round(a + (b-a)*Math.random()), y: Math.round(a + (b-a)*Math.random())};
+    for (let i=0; i< snakeArr.length; i++){
+        if (snakeArr[i].x === food.x && snakeArr[i].y === food.y){
+            newfoodpositon();
+            return;
+        }
     }
-    lastPaintTime= ctime;
-    gameEngine();
+    return;
+}
+function pauseGame(){
+    clearInterval(interval);
+    isPaused=true;
+    paused.innerHTML= "Game Paused";
+}
+
+function resumeGame(){
+    interval= setInterval(gameEngine,1000/speed);
+    isPaused= false;
+    paused.innerHTML="";
 }
 
 function gameEngine(){
@@ -38,16 +53,16 @@ function gameEngine(){
     if (snakeArr[0].x === food.x && snakeArr[0].y === food.y){
         foodSound.play();
         snakeArr.unshift({x: snakeArr[0].x + inputDir.x, y:snakeArr[0].y + inputDir.y});
-        let a=2,b=16;
-        food = {x: Math.round(a + (b-a)*Math.random()), y: Math.round(a + (b-a)*Math.random())};
+        newfoodpositon();
         score += 1;
-        // if (score > hiscoreval){
-        //     hiscoreval = score;
-        //     console.log(hiscoreval);
-        //     console.log(hiscore);
-        //     localStorage.setItem("hiscore", toString(hiscoreval));
-        //     hiscoreBox.innerHTML = "HiScore: " + hiscore;
-        // }
+        if (score >= hiscoreval){
+            hiscoreval = score;
+            localStorage.setItem("hiscore", hiscoreval);
+            let hisc = localStorage.getItem("hiscore");
+            if (hisc !=null){
+                hiscoreBox.innerHTML = "HiScore: " + hisc;
+            }
+        }
         scoreBox.innerHTML = "Score: " + score;
     }
 
@@ -98,22 +113,18 @@ function isCollide(snake){
 
 
 // Main Logic Starts here
-// let hiscore = localStorage.getItem("hiscore");
-// if (hiscore === null){
-//     hiscoreval = 0;
-//     localStorage.setItem("hiscore", toString(hiscoreval));
-//     console.log(hiscoreval);
-//     console.log(hiscore);
+var hiscore = localStorage.getItem("hiscore");
+if (hiscore == null){
+    hiscoreval = 0;
+    localStorage.setItem("hiscore", hiscoreval);
 
-// }
-// else{
-//     hiscoreval = JSON.parse(hiscore);
-//     hiscoreBox.innerHTML = "HiScore: "+ hiscore;
-//     console.log(hiscoreval);
-//     console.log(hiscore);
-// }
+}
+else{
+    hiscoreval = localStorage.getItem("hiscore");
+    hiscoreBox.innerHTML = "HiScore: "+ hiscore;
+}
 
-window.requestAnimationFrame(main);
+// window.requestAnimationFrame(main);
 window.addEventListener('keydown', e =>{
     //Start the game
     musicSound.play();
@@ -138,8 +149,14 @@ window.addEventListener('keydown', e =>{
             inputDir.x=  1;
             inputDir.y= 0;
             break;
-
         default:
             break;
-    }
+    }   
 });
+window.addEventListener("keydown", e => {
+    if (e.keyCode == 80){
+        if(isPaused) resumeGame();
+        else pauseGame();
+    }
+})
+let interval= setInterval(gameEngine,1000/speed);

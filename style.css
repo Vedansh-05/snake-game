@@ -48,9 +48,9 @@
     5px 0 15px rgb(81, 81, 255);
 }
 
-/* #hiscoreBox{
+#hiscoreBox{
     /* position: absolute; */
-    /* top: 59px;
+    top: 59px;
     right: 200px;
     font-family: 'Pixelify Sans', sans-serif;
     font-family: 'Silkscreen', sans-serif;
@@ -58,7 +58,19 @@
     color: whitesmoke;
     text-shadow: -5px 0 15px rgb(255, 108, 0),
     5px 0 15px rgb(81, 81, 255);
-} */
+}
+
+#paused{
+    top: 50px;
+    left: 100px;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-family: 'Silkscreen', sans-serif;
+    font-size: 75px;
+    color: whitesmoke;
+    text-shadow: -5px 0 15px rgb(255, 108, 0),
+    5px 0 15px rgb(81, 81, 255);
+}
+
 #board{
     border: solid white 2px;
     width: 88vmin;
